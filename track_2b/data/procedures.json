@@ -1,0 +1,6 @@
+[
+  {"id":"IT-101","title":"Lost laptop","url":"https://example.invalid/it/lost-laptop","text":"Report a lost laptop to the IT service desk immediately. Include the asset tag if known. Do not send passwords in the report."},
+  {"id":"IT-102","title":"Password reset","url":"https://example.invalid/it/password-reset","text":"Use the internal password reset portal. If the portal is unavailable, contact the IT service desk. Never share a password or one-time code with another person."},
+  {"id":"IT-103","title":"Printer support","url":"https://example.invalid/it/printer","text":"For a printer fault, note the printer asset tag and the displayed error code. Send those details to the IT service desk. Do not dismantle the printer."},
+  {"id":"IT-104","title":"Guest Wi-Fi","url":"https://example.invalid/it/guest-wifi","text":"Visitors request guest Wi-Fi access from reception. Guest access expires at the end of the visit. Staff must not share their own network credentials."}
+]

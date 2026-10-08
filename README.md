@@ -1,60 +1,34 @@
-# Hack Apertus — project template
+# ClearDesk
 
-Template repository for [Hack Apertus](https://hackapertus.ch/) submissions.
-Every project keeps almost the same layout, so organizers and judges find the
-same things in the same place.
+A local Apertus 1.5 CLI that selects a single verbatim passage from four
+synthetic IT procedures. A deterministic gate checks the source ID and exact
+quotation; unsupported questions yield abstention. The application takes no actions.
 
-## Select your track
+## Run
 
-This repository holds one example project per track:
+Use Docker, Compose and GNU Make. Obtain the exact model described in
+[provenance](track_2b/docs/provenance.md) separately; weights are not included.
+Set APERTUS_MODEL_PATH to its absolute path. Operators must approve the upstream
+Apertus AUP before setting APERTUS_AUP_APPROVED=1. Then run `make run` from this
+repository root. No API key or published host port is required.
 
-- `track_1a/`
-- `track_1b/`
-- `track_2a/`
-- `track_2b/`
+Set CLEARDESK_EVALUATE=1 for the optional seven-case development evaluation.
+Run `make test` for the 22 contract tests. See [run details](track_2b/docs/RUN.md).
 
-Keep the directory for the track you are competing in **exactly as it is** —
-don't rename it or move its files — and delete the other track directories.
-That directory is your project root. Keep the files and directories as shown
-below.
+## Measured Evidence
 
-## The structure
+Root GNU Make/Docker inference completed twice with exit 0 on the development
+workstation. Runtime inspection confirmed a read-only model mount, no published
+ports, an internal network and cleanup. Container development cases passed 7/7,
+alongside earlier CPU-only and Vulkan 7/7 runs. The failed 5/7 baseline is retained.
+These are development fixtures, not held-out accuracy or security certification.
 
-| Path | What it is |
-| --- | --- |
-| `README.md` | The challenge description and submission requirements for your track |
-| `technical_report.md` | The deeper write-up: architecture, evaluation, limitations |
-| `Makefile` | `make run` must spin up your project |
-| `src/` | Your code |
-| `data/` | Datasets — `track_1a`, `track_2a` and `track_2b` only; max. 100 MB |
-| `findings/` | Issue files — `track_1a` only |
-| `docs/` | Diagrams, notes, longer write-ups |
+- [Container verification](track_2b/docs/docker-verification.json)
+- [Technical report](track_2b/technical_report.md)
+- [Three-page PDF report](track_2b/ClearDesk_Report.pdf)
+- [Licenses and attribution](LICENSES.md)
 
-## Run it
-
-Judges run `make run` from the root of the project, on a clean checkout:
-
-```bash
-make run
-```
-
-`make run` is expected to run the project using Docker, since that
-is how the judges will run it.
-- If you used other local open-weight models, include instructions for running the project in your technical report.
-- Use the following environment variables:
-```
-LLM_NAME — name and version of the model
-LLM_BASE_URL — endpoint base URL
-LLM_API_KEY — your API key
-```
-
-## Getting started
-
-1. Click **Use this template** to create your own repository.
-2. Delete the other track directories. Don't rename or restructure yours.
-3. Read its `README.md` and fill in `technical_report.md`.
-4. Make `make run` work from the root of the project, on a clean checkout.
-
-## License
-
-All Hack Apertus projects are open-sourced. Please check our Terms & Conditions for specific licensing details (6. What you build is open source): https://hackapertus.ch/terms-and-conditions
+Based on the official HackApertus project template; the original Track 2B README
+is retained. No real institutional policy, live integration, model weights or
+credentials are included. Demo hosting and final contest submission are separate
+pending actions, not receipts established by this repository.

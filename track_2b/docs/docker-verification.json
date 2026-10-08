@@ -1,0 +1,50 @@
+{
+  "recorded_at": "2026-10-08T14:20:18.857990+00:00",
+  "synthetic": true,
+  "status": "verified_root_make_run",
+  "root_command": "make run",
+  "exit_code": 0,
+  "gnu_make": "4.4.1 Windows32 project-local",
+  "docker_server": "29.6.2",
+  "runtime_log_sha256": "9b3e9655bcba018d825e475a772b112a942e1ae595961f5b8d209912e80daa66",
+  "model": {
+    "bytes": 5059027136,
+    "sha256": "a037df8d87ff6caacee794ee85f55342f2152e0d359b7389033300c3bee5f299",
+    "llama_cpp_commit": "f498f864fbc0472004ee1c3616c1188c68eb157f"
+  },
+  "mount": {
+    "type": "bind",
+    "destination": "/models/apertus.gguf",
+    "read_only": true,
+    "published_ports": {}
+  },
+  "network_internal": true,
+  "owned_network_removed": true,
+  "actual_smoke": {
+    "question": "My work laptop is missing. What should I do?",
+    "status": "evidence_found",
+    "citations": [
+      {
+        "source_id": "IT-101",
+        "title": "Lost laptop",
+        "url": "https://example.invalid/it/lost-laptop",
+        "quote": "Report a lost laptop to the IT service desk immediately. Include the asset tag if known. Do not send passwords in the report."
+      }
+    ],
+    "model": "Colby/apertus-v1.5-8b-text-Q4_K_M-GGUF",
+    "elapsed_ms": 17939,
+    "raw_model_output": "{\"citations\":[{\"source_id\":\"IT-101\",\"quote\":\"Report a lost laptop to the IT service desk immediately. Include the asset tag if known. Do not send passwords in the report.\"}]}"
+  },
+  "evaluation": {
+    "file": "model-evaluation-endpoint-1791469094778.json",
+    "cases": 7,
+    "passed": 7,
+    "request_ms_total": 86238,
+    "sha256": "e5a1432cf286fa0a280308a9cfe74040e92de49311c1f71a33c994dc33dadce0"
+  },
+  "limitations": [
+    "Existing workstation/model, not a fresh-machine setup test",
+    "Seven development fixtures, not held-out evaluation",
+    "No publication, registration or legal acceptance performed"
+  ]
+}

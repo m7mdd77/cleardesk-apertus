@@ -1,0 +1,47 @@
+services:
+  model:
+    environment:
+      APERTUS_AUP_APPROVED: ${APERTUS_AUP_APPROVED:-0}
+    networks: [inference]
+    depends_on:
+      asset-check:
+        condition: service_completed_successfully
+    build:
+      context: .
+      dockerfile: Dockerfile.model
+    volumes:
+      - type: bind
+        source: ${APERTUS_MODEL_PATH:-../local-runtime/model.gguf}
+        target: /models/apertus.gguf
+        read_only: true
+        bind:
+          create_host_path: false
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 60
+  assistant:
+    build: .
+    environment:
+      LLM_NAME: Colby/apertus-v1.5-8b-text-Q4_K_M-GGUF
+      LLM_BASE_URL: http://model:8080/v1
+    depends_on:
+      model:
+        condition: service_healthy
+    networks: [inference]
+  asset-check:
+    build: .
+    entrypoint: [node, src/model-asset.mjs]
+    command: [/models/apertus.gguf]
+    volumes:
+      - type: bind
+        source: ${APERTUS_MODEL_PATH:-../local-runtime/model.gguf}
+        target: /models/apertus.gguf
+        read_only: true
+        bind:
+          create_host_path: false
+    network_mode: none
+networks:
+  inference:
+    internal: true

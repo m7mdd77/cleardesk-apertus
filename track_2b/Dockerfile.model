@@ -1,0 +1,9 @@
+FROM ubuntu:24.04 AS build
+RUN apt-get update && apt-get install -y --no-install-recommends git cmake build-essential ca-certificates curl && rm -rf /var/lib/apt/lists/*
+WORKDIR /llama
+RUN git init && git remote add origin https://github.com/ggml-org/llama.cpp.git && git fetch --depth 1 origin f498f864fbc0472004ee1c3616c1188c68eb157f && git checkout FETCH_HEAD
+RUN cmake -B build -DGGML_NATIVE=OFF -DLLAMA_OPENSSL=OFF -DLLAMA_BUILD_TESTS=OFF -DLLAMA_BUILD_EXAMPLES=OFF -DLLAMA_BUILD_SERVER=ON -DLLAMA_BUILD_APP=OFF && cmake --build build --target llama-server -j 2
+RUN mkdir -p /models
+COPY scripts/start-model.sh /start-model.sh
+ENTRYPOINT ["sh", "/start-model.sh"]
+CMD ["-m", "/models/apertus.gguf", "--host", "0.0.0.0", "--port", "8080", "-c", "4096", "-np", "1", "--alias", "Colby/apertus-v1.5-8b-text-Q4_K_M-GGUF"]

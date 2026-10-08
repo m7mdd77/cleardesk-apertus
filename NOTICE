@@ -1,0 +1,23 @@
+ClearDesk
+Copyright 2026 Mohammed Naser
+
+Template attribution:
+This project is based on HackApertus/project-template:
+https://github.com/HackApertus/project-template
+The template's Apache-2.0 LICENSE and Track 2B README are retained.
+ClearDesk adds the application source, synthetic fixtures, evaluation evidence,
+Docker model integration and report, and changes the root and track_2b Makefiles.
+The template LICENSE's "Your Team" appendix is upstream boilerplate; the
+copyright notice for ClearDesk contributions is given above.
+
+External dependencies (not bundled):
+llama.cpp, pinned commit f498f864fbc0472004ee1c3616c1188c68eb157f,
+https://github.com/ggml-org/llama.cpp, MIT license.
+The precise pinned commit used by the build is documented in provenance.md.
+Apertus model provenance and upstream usage conditions are in
+track_2b/docs/provenance.md. No model weights or portable runtime binaries
+are distributed in this repository.
+
+The original failed evaluation and later successful development runs are
+retained. Synthetic fixture URLs are not real institutional integrations.
+See LICENSES.md for the distinct code, documentation and data licenses.

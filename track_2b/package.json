@@ -1,0 +1,7 @@
+{
+  "name": "cleardesk-apertus",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test src/*.test.mjs", "demo": "node src/evaluate.mjs" },
+  "engines": { "node": ">=22" }
+}

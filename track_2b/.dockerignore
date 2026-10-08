@@ -1,0 +1,10 @@
+**
+!package.json
+!Dockerfile
+!Dockerfile.model
+!src/
+!src/**
+!data/
+!data/**
+!scripts/
+!scripts/start-model.sh
